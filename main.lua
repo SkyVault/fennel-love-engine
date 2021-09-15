@@ -1,5 +1,8 @@
--- bootstrap the compiler
-fennel = require("lib.fennel")
+local fennel = require("lib.fennel")
+local source_dir = "src"
+local fs = love.filesystem
+
+-- start repl
 table.insert(package.loaders, fennel.make_searcher({correlate=true}))
 pp = function(x) print(fennel.view(x)) end
 lume = require("lib.lume")
@@ -19,4 +22,4 @@ end
 table.insert(package.loaders, make_love_searcher(_G))
 table.insert(fennel["macro-searchers"], make_love_searcher("_COMPILER"))
 
-require("wrap")
+require("src.main")
